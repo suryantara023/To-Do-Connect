@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:todolist/app/modules/Edit/views/edit_view.dart';
 import 'package:todolist/app/modules/QrCode/views/qr_code_view.dart';
@@ -7,8 +7,31 @@ import 'package:todolist/app/modules/Tambah/views/tambah_view.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  HomeView({Key? key}) : super(key: key);
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  Dio dio = Dio();
+  final String baseUrl = "https://crowning-bailing.000webhostapp.com/api/home";
+  void GetData() async {
+    final response = await dio.get(baseUrl);
+    if (response.statusCode == 200) {
+      print(
+        response.data,
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    GetData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,13 +90,13 @@ class HomeView extends GetView<HomeController> {
             ),
             Positioned(
                 top: 150,
-                left: 30,
+                left: 20,
                 child: FilledButton(
                     onPressed: () {
                       Get.to(TambahView());
                     },
                     child: Text(
-                      'Tambah',
+                      'Tambah Catatan Baru',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ))),
             Positioned(
