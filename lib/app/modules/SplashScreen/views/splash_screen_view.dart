@@ -43,7 +43,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: FittedBox(
                     child: Text(
-                  'Yuk Catatan',
+                  'To-Do Connect',
                   style: TextStyle(
                       fontWeight: FontWeight.w700, color: Colors.black),
                 )),

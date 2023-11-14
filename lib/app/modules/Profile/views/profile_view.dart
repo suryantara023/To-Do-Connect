@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:todolist/app/modules/Login/views/login_view.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -38,7 +39,7 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                 ),
                 Text(
-                  'Sincya',
+                  'Agus',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
               ],
@@ -75,7 +76,9 @@ class _ProfileViewState extends State<ProfileView> {
                         EdgeInsets.symmetric(horizontal: 110, vertical: 10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(LoginView());
+                    },
                     child: Text(
                       'Logout',
                       style: TextStyle(

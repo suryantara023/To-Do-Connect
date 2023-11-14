@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:todolist/app/modules/BottomBar/views/bottom_bar_view.dart';
 import 'package:todolist/app/modules/Home/views/home_view.dart';
@@ -71,7 +70,7 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         TextFormField(
                           keyboardType: TextInputType.emailAddress,
-                          // controller: _loginController.username,
+                          controller: controller.email,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Email Tidak Boleh Kosong";
@@ -81,7 +80,7 @@ class _LoginViewState extends State<LoginView> {
                           decoration: InputDecoration(
                               contentPadding: EdgeInsets.symmetric(
                                   vertical: 5, horizontal: 20),
-                              label: Text('Masukkan Username/Email'),
+                              label: Text('Masukkan Email'),
                               border: OutlineInputBorder(),
                               suffixIcon: Icon(Icons.person)),
                         ),
@@ -90,7 +89,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         Obx(
                           () => TextFormField(
-                            // controller: _loginController.password,
+                            controller: controller.password,
                             obscureText: !sembunyikan.value,
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -115,8 +114,7 @@ class _LoginViewState extends State<LoginView> {
                           children: [
                             Text(
                               'Belum Punya Akun?',
-                              style: TextStyle(
-                                  fontFamily: 'Poppins', fontSize: 12),
+                              style: TextStyle(fontSize: 12),
                             ),
                             TextButton(
                                 onPressed: () {
@@ -125,7 +123,6 @@ class _LoginViewState extends State<LoginView> {
                                 child: Text(
                                   'Registrasi',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700),
                                 ))
@@ -141,9 +138,8 @@ class _LoginViewState extends State<LoginView> {
                       if (_formkey.currentState!.validate()) {
                         _formkey.currentState!.save();
                         Get.to(BottomBarView());
-                        // return _loginController.login(
-                        //     _loginController.username.text,
-                        //     _loginController.password.text);
+                        // return controller.login(
+                        //     controller.email.text, controller.password.text);
                       }
                     },
                     style: ButtonStyle(

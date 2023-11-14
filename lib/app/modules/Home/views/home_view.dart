@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:todolist/app/modules/Edit/views/edit_view.dart';
+import 'package:todolist/app/modules/Login/controllers/login_controller.dart';
 import 'package:todolist/app/modules/QrCode/views/qr_code_view.dart';
 import 'package:todolist/app/modules/Tambah/views/tambah_view.dart';
 
@@ -15,6 +16,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final LoginController login = LoginController();
   Dio dio = Dio();
   final String baseUrl = "https://crowning-bailing.000webhostapp.com/api/home";
   void GetData() async {
@@ -35,11 +37,6 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //     child: Icon(Icons.add),
-      //     onPressed: () {
-      //       Get.to(TambahView());
-      //     }),
       body: SafeArea(
         child: Stack(
           clipBehavior: Clip.none,
@@ -64,7 +61,7 @@ class _HomeViewState extends State<HomeView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Hello Sincya',
+                        'Hello Agus',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 30),
                       ),

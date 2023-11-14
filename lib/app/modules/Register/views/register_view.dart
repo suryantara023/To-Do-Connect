@@ -67,7 +67,7 @@ class _RegisterViewState extends State<RegisterView> {
                       children: [
                         TextFormField(
                           keyboardType: TextInputType.text,
-                          // controller: _loginController.username,
+                          controller: controller.name,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Nama Tidak Boleh Kosong";
@@ -86,7 +86,7 @@ class _RegisterViewState extends State<RegisterView> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.emailAddress,
-                          // controller: _loginController.username,
+                          controller: controller.email,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Email Tidak Boleh Kosong";
@@ -105,7 +105,7 @@ class _RegisterViewState extends State<RegisterView> {
                         ),
                         Obx(
                           () => TextFormField(
-                            // controller: _loginController.password,
+                            controller: controller.password,
                             obscureText: !sembunyikan.value,
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -155,9 +155,8 @@ class _RegisterViewState extends State<RegisterView> {
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
                         _formkey.currentState!.save();
-                        // return _loginController.login(
-                        //     _loginController.username.text,
-                        //     _loginController.password.text);
+                        controller.register(controller.name.text,
+                            controller.email.text, controller.password.text);
                       }
                     },
                     style: ButtonStyle(
@@ -169,8 +168,7 @@ class _RegisterViewState extends State<RegisterView> {
                     ),
                     child: Text(
                       'Daftar',
-                      style: TextStyle(
-                          fontFamily: 'Poppins', fontWeight: FontWeight.w700),
+                      style: TextStyle(fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),
